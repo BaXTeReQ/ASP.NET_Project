@@ -1,0 +1,43 @@
+﻿@model Car
+
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<section class="singleOffer">
+    <div class="container-sm">
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <img src="@Model.CarPicture" alt="@Model.CarName @Model.CarModel">
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <span class="h4">@Model.CarName @Model.CarModel</span>
+                <span class="h4">Kraj pochodzenia: @Model.CarOrigin</span>
+                <span class="h4" id="carPrice">Cena: @Model.CarPrice zł/dzień</span>
+                <span class="h4">Rocznik: @Model.CarYear</span>
+            </div>
+            <div class="col-xs-12">
+                <p class="h5">@Model.CarDescription</p>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <form asp-action="MakeOrder" asp-controller="Order" method="POST">
+                        <span class='h4 center-xs'><i class='fas fa-chevron-down'></i> Policz cenę <i class='fas fa-chevron-down'></i></span>
+                        <span class='h4'>Ilość dni wypożyczenia: </span>
+                        <input type='number' id='days' name='number' value="0">
+                        <span class='h4' name='cost' id="cost">Cena: <span></span></span>
+                        <span class="h4" style="color:red;" id="submitAlert">Liczba dni musi być pomiędzy 0 a 31!</span>
+                        <input type="hidden" name="carId" id="carId" value="@Model.CarId" />
+                        <button id="submitCheck" type="submit" style="cursor:pointer;">Zamów <i class="fas fa-shopping-basket"></i></button>
+                        <div style="visibility: hidden;" id="priceDiv"></div>
+                    </form>
+                }
+                else
+                {
+                    <a asp-area="Identity" asp-page="/Account/Login" style=" text-align: center; color: red; font-weight: bold; padding: 10px 15px; text-decoration: none;">Zaloguj się, aby złożyć zamówienie <i class="fas fa-arrow-right"></i></a>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/js/script.js"></script>

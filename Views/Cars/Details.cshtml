@@ -1,0 +1,19 @@
+﻿@model Car
+
+<section class="singleOffer">
+    <div class="container-sm">
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <img src="@Model.CarPicture" alt="@Model.CarName @Model.CarModel">
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <span class="h4">@Model.CarName @Model.CarModel</span>
+                <span class="h4">Kraj pochodzenia: @Model.CarOrigin</span>
+                <span class="h4" id="carPrice">Cena: @Model.CarPrice zł/dzień</span>
+                <span class="h4">Rocznik: @Model.CarYear</span>
+            </div>
+            <span class="col-xs-12" style="text-align:justify;">@Model.CarDescription</span>
+            <a asp-action="Index" style="text-decoration: none; color: white; background-color: #6f42c1; padding: 10px 25px; border-radius: 1rem; margin: 5px auto; width: 120px; text-align: center;"><i class="fas fa-arrow-left"></i> Powrót</a>
+        </div>
+    </div>
+</section>

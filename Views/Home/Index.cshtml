@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Car>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<section class="slider">
+    @foreach (var item in Model)
+    {
+        <div>
+            <h2>@item.CarName</h2>
+            <h3>@item.CarModel</h3>
+            <img src="@item.CarPicture" alt="@item.CarName">
+            <a href="#offer"><i class="fas fa-chevron-down"></i> Oferta <i class="fas fa-chevron-down"></i></a>
+        </div>
+    }
+</section>
+
+<section class="offer" id="offer">
+    <div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class='col-xs-12 col-sm-6 col-lg-4 card--selected'>
+                    <div class='card'>
+                        <img src='@item.CarPicture' alt='@item.CarName'>
+                        <form action='@Url.Action("Details", "Car")' method='POST'>
+                            <!--<input type='hidden' name='id' value='<%= i%>'></input>-->
+                            <span>Marka: @item.CarName</span>
+                            <span>Model: @item.CarModel</span>
+                            <span>Pochodzenie: @item.CarOrigin</span>
+                            <span>Rok produkcji: @item.CarYear</span>
+                            <span>Cena: @item.CarPrice zł/dzień</span>
+                            <button type='submit' asp-controller="Car" asp-action="Details" asp-route-id="@item.CarId">Więcej <i class='fas fa-chevron-right'></i></button>
+                        </form>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+

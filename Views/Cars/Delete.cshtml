@@ -1,0 +1,20 @@
+﻿@model Car
+
+<section class="singleOffer">
+    <div class="container-sm">
+        <form asp-action="Delete" class="row" style="display: flex; flex-direction: column; align-items: center;">
+            <div class="col-xs-12 col-md-8">
+                <img src="@Model.CarPicture" alt="@Model.CarName @Model.CarModel">
+            </div>
+            <div class="col-xs-12 col-md-8" style="display: flex; gap: 5px 2px; flex-direction: column; align-items: center; justify-content: center;">
+                <label for="marka" style="width: fit-content;">Marka Auta</label>
+                <input readonly asp-for="@Model.CarName" id="marka" placeholder="Marka Auta" style="width: 100%; padding: 5px; border-radius: 1rem; font-size: 20px; max-width: 400px;"/>
+                <label for="model" style="width: fit-content;">Model Auta</label>
+                <input readonly asp-for="@Model.CarModel" id="model" placeholder="Model Auta" style="width: 100%; padding: 5px; border-radius: 1rem; font-size: 20px; max-width: 400px;"/>
+            </div>
+            <input type="hidden" asp-for="@Model.CarId" readonly />
+            <button type="submit" value="Delete" style="padding: 10px 25px; border-radius: 1rem; background-color: #e74c3c; border-color: #e74c3c; ">Usuń <i class="fas fa-save"></i></button>
+            <a asp-action="Index" style="text-decoration: none; color: white; background-color: #6f42c1; padding: 10px 25px; border-radius: 1rem; margin: 5px auto; width: 120px; text-align: center;"><i class="fas fa-arrow-left"></i> Powrót</a>
+        </form>
+    </div>
+</section>

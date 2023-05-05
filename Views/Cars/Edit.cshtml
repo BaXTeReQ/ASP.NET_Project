@@ -1,0 +1,29 @@
+﻿@model Car
+
+<section class="singleOffer">
+    <div class="container-sm">
+        <form asp-action="Edit" class="row" style="display: flex; flex-direction: column; align-items: center;">
+            <div class="col-xs-12 col-md-8">
+                <img src="@Model.CarPicture" alt="@Model.CarName @Model.CarModel">
+            </div>
+            <div class="col-xs-12 col-md-8" style="display: flex; gap: 5px 2px; flex-direction: column; align-items: center; justify-content: center;">
+                <label for="marka" style="width: fit-content;">Marka Auta</label>
+                <input asp-for="@Model.CarName" id="marka" placeholder="Marka Auta" style="width: 100%; padding: 5px; border-radius: 1rem; font-size: 20px; max-width: 400px;"/>
+                <label for="model" style="width: fit-content;">Model Auta</label>
+                <input asp-for="@Model.CarModel" id="model" placeholder="Model Auta" style="width: 100%; padding: 5px; border-radius: 1rem; font-size: 20px; max-width: 400px;"/>
+                <label for="kraj" style="width: fit-content;">Kraj Pochodzenia Auta</label>
+                <input asp-for="@Model.CarOrigin" id="kraj" placeholder="Kraj Pochodzenia" style="width: 100%; padding: 5px; border-radius: 1rem; font-size: 20px; max-width: 400px;"/>
+                <label for="rocznik" style="width: fit-content;">Rocznik Auta</label>
+                <input asp-for="@Model.CarYear" id="rocznik" placeholder="Rocznik auta" style="width: 100%; padding: 5px; border-radius: 1rem; font-size: 20px; max-width: 400px;"/>
+                <label for="cena" style="width: fit-content;">Cena Auta (zł/dzień)</label>
+                <input asp-for="@Model.CarPrice" id="cena" placeholder="Cena auta (zł/dzień)" style="width: 100%; padding: 5px; border-radius: 1rem; font-size: 20px; max-width: 400px;"/>
+                <label for="foto" style="width: fit-content;">Zdjęcie Auta (ścieżka)</label>
+                <input asp-for="@Model.CarPicture" id="foto" placeholder="Zdjęcie Auta (ścieżka)" style="width: 100%; padding: 5px; border-radius: 1rem; font-size: 20px; max-width: 400px;"/>
+                <label for="opis" style="width: fit-content;">Opis Auta</label>
+                <textarea asp-for="@Model.CarDescription" id="opis" placeholder="Opis auta" style="padding: 5px; border-radius: 1rem; font-size: 20px;" rows="10" cols="45">@Model.CarDescription</textarea>
+            </div>
+            <button type="submit" value="Update" style="padding: 10px 25px; border-radius: 1rem; background-color: #2ecc71; border-color: #2ecc71;">Zapisz zmiany <i class="fas fa-save"></i></button> 
+            <a asp-action="Index" style="text-decoration: none; color: white; background-color: #6f42c1; padding: 10px 25px; border-radius: 1rem; margin: 5px auto; width: 120px; text-align: center;"><i class="fas fa-arrow-left"></i> Powrót</a>
+        </form>
+    </div>
+</section>

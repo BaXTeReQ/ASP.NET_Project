@@ -1,0 +1,25 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<section class="logForm">
+    <form id="account" method="POST">
+        <h2>Zaloguj się</h2>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Input.Email"></label>
+            <input asp-for="Input.Email" class="form-control" />
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Input.Password"></label>
+            <input asp-for="Input.Password" class="form-control" />
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Zaloguj się</button>
+        <a asp-area="Identity" asp-page="/Account/Register">Nie masz konta? Zarejestruj się</a>
+    </form>
+</section>

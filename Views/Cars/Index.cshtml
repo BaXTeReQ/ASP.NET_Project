@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Car>
+
+@{
+    ViewData["Title"] = "List of Cars";
+}
+
+<section class="row">
+    <div class="col-xs-12 col-md-10" style=" display: flex; gap: 15px; flex-direction: column; margin: 15px auto;">
+        @foreach (var item in Model) {
+        <div style="text-align:center; color: black; display: flex; align-items: center; flex-direction: row; flex-wrap: wrap;" class="middle-md">
+            <img src="@item.CarPicture" alt="@item.CarName @item.CarModel" class="col-xs-12 col-sm-4"/>
+            <p class="col-xs-12 col-sm-4" style="height: fit-content;">@item.CarName @item.CarModel</p>
+            <div class="col-xs-12 col-sm-4" style="display: flex; flex-direction: column; margin-top: 10px; align-items: center;">
+                <a asp-action="Edit" asp-route-id="@item.CarId" style="text-decoration: none; color: white; background-color: #2980b9; padding: 10px 25px; border-radius: 1rem; margin: 5px; width: 120px; text-align:center;">Edytuj <i class="fas fa-edit"></i></a>
+                <a asp-action="Details" asp-route-id="@item.CarId" style="text-decoration: none; color: white; background-color: #6f42c1; padding: 10px 25px; border-radius: 1rem; margin: 5px; width: 120px; text-align: center;">Szczegóły <i class="fas fa-info-circle"></i></a>
+                <a asp-action="Delete" asp-route-id="@item.CarId" style="text-decoration: none; color: white; background-color: #e74c3c; padding: 10px 25px; border-radius: 1rem; margin: 5px; width: 120px; text-align: center;">Usuń <i class="fas fa-trash-alt"></i></a>
+            </div>
+        </div>
+        }
+    </div>
+</section>
+
+<a asp-action="Create" style="position:fixed; bottom: 50px; right: 25px; z-index: 10; text-decoration: none; color: white; background-color: #2ecc71; padding: 10px 25px; border-radius: 1rem; margin: 5px; width: 120px; text-align: center;">Dodaj <i class="fas fa-plus-circle"></i></a>
